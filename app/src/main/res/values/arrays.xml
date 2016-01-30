@@ -1,0 +1,7 @@
+<resources>
+    <string-array name="image_title">
+        <item>Giraffe</item>
+        <item>Frog</item>
+        <item>Monkeys</item>
+    </string-array>
+</resources>
