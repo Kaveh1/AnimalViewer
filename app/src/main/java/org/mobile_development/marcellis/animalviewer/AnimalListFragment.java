@@ -42,14 +42,14 @@ public class AnimalListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        List<ListModel> listModels = new ArrayList<>() ;
+        List<ListModel> listModels = new ArrayList<>();
 
         for (int i = 0; i < imageIds.length; i++) {
             listModels.add(new ListModel(imageIds[i], animalNames[i]));
         }
 
 
-        View view= inflater.inflate(R.layout.fragment_animal_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_animal_list, container, false);
         listView = (ListView) view.findViewById(R.id.listview);
         adapter = new ListAdapter(getActivity(), R.layout.animal_list_item, listModels);
         listView.setAdapter(adapter);
@@ -57,7 +57,11 @@ public class AnimalListFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View listItem, int position, long id) {
-                ((FragmentActivity) getActivity()).showDetail(position);
+                if (getActivity().getClass() == ViewPagerActivity.class) {
+                    ((ViewPagerActivity) getActivity()).scrollToPage(position);
+                } else {
+                    ((FragmentActivity) getActivity()).showDetail(position);
+                }
             }
         });
 

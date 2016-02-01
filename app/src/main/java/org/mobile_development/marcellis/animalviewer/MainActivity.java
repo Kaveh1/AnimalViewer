@@ -22,11 +22,23 @@ public class MainActivity extends AppCompatActivity {
 
         Button button = (Button) findViewById(R.id.button);
 
+        Button button2 = (Button) findViewById(R.id.idViewPagerButton);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent(MainActivity.this, FragmentActivity.class);
+                startActivity(myIntent);
+
+            }
+        });
+
+
+
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(MainActivity.this, ViewPagerActivity.class);
                 startActivity(myIntent);
 
             }
