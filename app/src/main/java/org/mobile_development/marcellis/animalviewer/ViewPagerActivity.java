@@ -35,19 +35,23 @@ public class ViewPagerActivity extends AppCompatActivity {
 
         animalNames = getResources().getStringArray(R.array.image_title);
         descriptionStrings = getResources().getStringArray(R.array.description_tekst);
+
         viewpageIndicatorContainer = (LinearLayout) findViewById(R.id.page_indicator_container);
         final TextView TITLE = (TextView) findViewById(R.id.image_title);
         final TextView DESCRIPTION = (TextView) findViewById(R.id.description_text);
+
         TITLE.setText(animalNames[0]);
         DESCRIPTION.setText(descriptionStrings[0]);
 
         int viewPagerLength = viewpageIndicatorContainer.getChildCount();
+
         for (int i = 0; i < viewPagerLength; i++) {
             indicatorList.add((ImageView) viewpageIndicatorContainer.getChildAt(i));
         }
 
         mpager = (ViewPager) findViewById(R.id.viewpager);
-        pageAdapter = new MyPageAdapter (getSupportFragmentManager());
+        pageAdapter = new MyPageAdapter(getSupportFragmentManager());
+        mpager.setAdapter(pageAdapter);
 
        mpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
            @Override
